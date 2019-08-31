@@ -1,5 +1,7 @@
+
 const canvasColor = document.getElementsByClassName('pixel');
 const paintedClass = document.getElementsByClassName('painted');
+let mouseDown = 0;
 
 function grids(){
     let gridDiv = document.createElement("div");
@@ -14,19 +16,28 @@ function canvasRepeat(){
     }
 }
 
-function getArray(){
-    Array.from(canvasColor).forEach(element => element.addEventListener('click', changeColor));
-    
-};
+function init(){
 
-function changeColor() {
-        Array.from(canvasColor).forEach(element => element.addEventListener('mouseover', function() {
-            element.classList.replace('pixel', 'painted')
-        })
-)};
+    canvasRepeat();
+
+    Array.from(canvasColor).forEach(mousedown => mousedown.addEventListener('mousedown', function xdxd(){
+        mouseDown = 1;
+        mousedown.classList.replace('pixel', 'painted');
+    }));
+
+    Array.from(canvasColor).forEach(mouseup => mouseup.addEventListener('mouseup', function xd(){
+        mouseDown = 0;
+    }));
+
+    Array.from(canvasColor).forEach(move => move.addEventListener('mouseover', function hue(){
+        if(mouseDown === 1)move.classList.replace('pixel', 'painted');
+    }))
+}
+
+init();
 
 function clearPainted() {
-    let x = prompt('Choose canvas size. Max 100px', 16);
+    let x = prompt('Canvas size. Max 100px', 16);
     if(x > 100){
         alert('Max value is 100');
     }
@@ -43,8 +54,4 @@ function clearPainted() {
     }
     Array.from(paintedClass).forEach(element => element.classList.replace('painted', 'pixel'));
 }
-
-canvasRepeat();
-getArray();
-
 

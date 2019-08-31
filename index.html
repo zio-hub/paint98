@@ -2,14 +2,20 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta content="./images/icon.png" itemprop="image">
     <title>Paint</title>
+    <link rel="shortcut icon" type="image/png" href="./images/icon.png" sizes="16x16">
     <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <button id="clear" onclick="clearPainted()">Clear canvas</button>
-    <div id="container">
-        <img src="./images/paint_window.png">
+    <div id="container"> 
         <div id="canvas"></div>
+        <div id="paintwindow">
+            <img src="./images/paint_window.png">
+        </div>
+        
     </div>
     <script src="script.js" type="text/javascript"></script>
 </body>

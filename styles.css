@@ -18,7 +18,6 @@ img {
 }
 
 #canvas {
-
     display: grid;
     grid-template-columns: repeat(16, 2fr);
     grid-template-rows: repeat(16, 2fr);
@@ -29,14 +28,34 @@ img {
     height: 400px;
 }
 
+#clear{
+    position: absolute;
+    background-color: #c0c7c8;
+    font-family: arial;
+    outline: none;
+    border-color: #434447;
+    border-left-color: #ffffff;
+    border-top-color: #ffffff;
+    border-right-width: 1.4px;
+    border-top-width: 1.4px;
+    border-bottom-width: 1.4px;
+    border-left-width: 1.4px;
+    width: 55px; 
+    left: 362px;
+    top: 400px;
+    z-index: 100;
+}
+
 .pixel {
     background: white;
     width: auto;
+    cursor: url('./images/pen_cursor.png') 0 17, auto;
 }
 
 .painted {
     background: black;
     width: auto;
+    cursor: url('images/pen_cursor.png') 0 17, auto;
 }
 
 .pixel:hover {
