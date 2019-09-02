@@ -22,8 +22,24 @@
         <button id="redcolorpick" onclick="colorPickRed()"></button>
         <button id="blackcolorpick" onclick="colorPickBlack()"></button>
     </div>
-    <div>
-        <button id="windowsstart"></button>
+    <div id="start">
+        <button id="windowsstart" onclick="startUp()"></button>
+        <div id="startdrop" class="startdropcontent">
+            <a id="github" href="https://github.com/zio-hub">GitHub Repository</a>
+            <a id="wupdate" href="#">Windows Update</a>
+            <div id="separator"></div>
+            <a id="programs" href="#">Programs</a>
+            <a id="favorites" href="#">Favorites</a>
+            <a id="documents" href="#">Documents</a>
+            <a id="settings" href="#">Settings</a>
+            <a id="find" href="#">Find</a>
+            <a id="help" href="#">Help</a>
+            <a id="run" href="#">Run...</a>
+            <div id="separator"></div>
+            <a id="logoff" href="#">Log Off...</a>
+            <a id="shutdown" onclick="shutDown()" href="#">Shut Down...</a>
+            <div id="w98bar"></div>
+        </div>
     </div>
     <script src="script.js" type="text/javascript"></script>
 </body>

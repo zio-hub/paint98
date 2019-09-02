@@ -1,4 +1,3 @@
-
 const canvasColor = document.getElementsByClassName('pixel');
 const paintedClass = document.getElementsByClassName('painted');
 const pickcolorRed = document.getElementById('redcolor');
@@ -30,7 +29,6 @@ function mouseOver(){
 };
 
 function init(){
-
     canvasRepeat();
 
     Array.from(canvasColor).forEach(mousedown => mousedown.addEventListener('mousedown', function mdown(){
@@ -96,4 +94,31 @@ function colorPickRed(){
         redclick.classList.replace('pixel', 'redColor');
     }}))
 }
+
+function startUp(){
+    document.getElementById('startdrop').classList.toggle('showstartcontent');
+    document.getElementById('windowsstart').classList.toggle('active')
+}
+
+window.onclick = function(e){
+    if(!e.target.matches('#windowsstart')){
+        var startups = document.getElementsByClassName('startdropcontent');
+        var i;
+        for(i = 0; i < startups.length; i++){
+            var openStartup = startups[i];
+            if(openStartup.classList.contains('showstartcontent')){
+                openStartup.classList.remove('showstartcontent');
+                document.getElementById('windowsstart').classList.toggle('active')
+            }
+        }
+    }
+}
+
+function shutDown(){
+    var myWindow = window.open("", "_self");
+    var x=confirm('Shut Down?');
+    if(x) { 
+        myWindow.document.write("");
+        setTimeout (function() {myWindow.close();},1000)}
+};
 

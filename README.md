@@ -1,3 +1,3 @@
-JavaScript Project: Etch-a-Sketch/Paint
+Windows 98 Paint
 
-https://www.theodinproject.com/lessons/etch-a-sketch-project
+JavaScript Project
