@@ -1,6 +1,10 @@
 
 const canvasColor = document.getElementsByClassName('pixel');
 const paintedClass = document.getElementsByClassName('painted');
+const pickcolorRed = document.getElementById('redcolor');
+const redPainted = document.getElementsByClassName('redColor');
+
+let toggle = true;
 let mouseDown = 0;
 
 function grids(){
@@ -16,28 +20,38 @@ function canvasRepeat(){
     }
 }
 
+function mouseOver(){
+    Array.from(canvasColor).forEach(move => move.addEventListener('mouseover', function mmove(){
+        if(mouseDown === 1 && toggle === true){
+            move.classList.replace('pixel', 'painted');
+            move.classList.replace('redColor', 'painted');
+        }
+    }))
+};
+
 function init(){
 
     canvasRepeat();
 
-    Array.from(canvasColor).forEach(mousedown => mousedown.addEventListener('mousedown', function xdxd(){
+    Array.from(canvasColor).forEach(mousedown => mousedown.addEventListener('mousedown', function mdown(){
         mouseDown = 1;
-        mousedown.classList.replace('pixel', 'painted');
+        if(toggle === true) {
+            mousedown.classList.replace('pixel', 'painted');
+            mousedown.classList.replace('redColor', 'painted');
+        }
     }));
 
-    Array.from(canvasColor).forEach(mouseup => mouseup.addEventListener('mouseup', function xd(){
+    Array.from(canvasColor).forEach(mouseup => mouseup.addEventListener('mouseup', function mup(){
         mouseDown = 0;
     }));
 
-    Array.from(canvasColor).forEach(move => move.addEventListener('mouseover', function hue(){
-        if(mouseDown === 1)move.classList.replace('pixel', 'painted');
-    }))
+    mouseOver();
 }
 
 init();
 
 function clearPainted() {
-    let x = prompt('Canvas size. Max 100px', 16);
+    let x = prompt('Choose canvas size (1-100):', 16);
     if(x > 100){
         alert('Max value is 100');
     }
@@ -53,5 +67,33 @@ function clearPainted() {
         Array.from(paintedClass).forEach(element => element.style.width = 'auto');
     }
     Array.from(paintedClass).forEach(element => element.classList.replace('painted', 'pixel'));
+    Array.from(redPainted).forEach(element => element.classList.replace('redColor', 'pixel'));
+}
+
+function colorPickBlack(){
+    toggle = true;
+}
+
+function colorPickRed(){
+    toggle = false;
+
+    Array.from(canvasColor).forEach(red => red.addEventListener('mouseover', function redcolor(){
+        if(mouseDown === 1 && toggle === false){
+            red.classList.replace('pixel', 'redColor');
+    }}))
+
+    Array.from(paintedClass).forEach(redmove => redmove.addEventListener('mouseover', function redcolor(){
+        if(mouseDown === 1 && toggle === false){
+        redmove.classList.replace('painted', 'redColor');
+    }}))
+
+    Array.from(paintedClass).forEach(mousedown => mousedown.addEventListener('mousedown', function mdown(){
+        if(toggle === false)mousedown.classList.replace('painted', 'redColor');
+    }));
+
+    Array.from(canvasColor).forEach(redclick => redclick.addEventListener('mousedown', function redcolor(){
+        if(toggle === false){
+        redclick.classList.replace('pixel', 'redColor');
+    }}))
 }
 
