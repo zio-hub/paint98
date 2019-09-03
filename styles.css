@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'pix M 8pt';
     src: url('./fonts/mpt8.woff2') format('woff2'),
-        url('./fonts/mpt8.woff') format('woff');
+         url('./fonts/mpt8.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -11,25 +11,51 @@ html {
     height: 28px;
     background-color: #008081;
     background-image: url('./images/taskbar.png');
-    background-position-y: 615.5px;
+    background-position: bottom left;
     background-attachment: fixed;
-    background-size: contain;
+    background-size: auto;
     background-repeat: no-repeat;
 }
 
-@media screen and (min-width: 1366px){
-    html {
-    background-image: url('./images/taskbar_1366.png');
-    }
+@media screen and (min-width: 1280px) {
+    html {background-image: url('./images/taskbar_1280.png')}
 }
 
-@media screen and (min-width: 1920px){
-    html {
-    background-image: url('./images/taskbar_1920.png');
-    }
+@media screen and (min-width: 1366px) {
+    html {background-image: url('./images/taskbar_1366.png')}
 }
 
-body{
+@media screen and (min-width: 1440px) {
+    html {background-image: url('./images/taskbar_1440.png')}
+
+    #container {
+        position: relative;
+        top: 150px; 
+    }
+
+    #paintbuttons {
+        position: relative;
+        top: 150px;
+    }
+
+}
+
+@media screen and (min-width: 1920px) {
+    html {background-image: url('./images/taskbar_1920.png')}
+
+    #container {
+        position: relative;
+        top: 250px; 
+    }
+
+    #paintbuttons {
+        position: relative;
+        top: 250px;
+    }
+
+}
+
+body {
     margin: 0;
     width: 600px;
     max-height: 644px;
@@ -54,7 +80,6 @@ body{
     transform: translate(-50%, -50%);
 }
 
-
 #canvas {
     display: grid;
     grid-template-columns: repeat(16, 2fr);
@@ -67,35 +92,27 @@ body{
     height: 400px;
 }
 
-.redColor{
+.redColor {
     background: #ff0000;
     cursor: url('./images/pen_cursor.png') 0 17, auto;
 }
 
-.redColor:hover{
-    background: #ff0000;
-    cursor: url('./images/pen_cursor.png') 0 17, auto;
-}
-
-#redcolorpick{
+#colorselector {
     position: absolute;
-    top: 517px;
-    left: 425px;
-    background-color: #ff0000;
-    width: 13.05px;
-    height: 13.05px;
-    border: 1px solid #000;
-    border-right: 0;
-    border-bottom: 0;
+    top: 508px;
+    left: 367px;
+    background-color: #000;
+    width: 11px;
+    height: 11px;
     outline: none;
 }
 
-#blackcolorpick{
+#redcolorpick {
     position: absolute;
-    top: 502px;
-    left: 393.2px;
-    background-color: #000;
-    width: 13.05px;
+    top: 518px;
+    left: 425px;
+    background-color: #ff0000;
+    width: 12.9px;
     height: 12.9px;
     border: 1px solid #000;
     border-right: 0;
@@ -103,6 +120,31 @@ body{
     outline: none;
 }
 
+#blackcolorpick {
+    position: absolute;
+    top: 502px;
+    left: 393.2px;
+    background-color: #000;
+    width: 12.9px;
+    height: 12.9px;
+    border: 1px solid #000;
+    border-right: 0;
+    border-bottom: 0;
+    outline: none;
+}
+
+#whitecolorpick {
+    position: absolute;
+    top: 518px;
+    left: 393.2px;
+    background-color: #ffffff;
+    width: 12.9px;
+    height: 12.9px;
+    border: 1px solid #000;
+    border-right: 0;
+    border-bottom: 0;
+    outline: none;
+}
 
 #clear {
     position: absolute;
@@ -136,8 +178,9 @@ body{
     background-position: center;
     background-size: 53px;
     padding: 0;
-    position: absolute;
-    top: 605.5px;
+    margin-bottom: 2px;
+    position: fixed;
+    bottom: 0;
     left: 2px;
     width: 54px;
     height: 22px;
@@ -152,13 +195,13 @@ body{
     user-select: none;
 }
 
-#windowsstart:active{
+#windowsstart:active {
     border-color: #ffffff;
     border-left-color: #000000;
     border-top-color: #000000;
 }
 
-.active{
+.active {
     border-bottom-color: #ffffff !important;
     border-right-color: #ffffff !important;
     border-left-color: #000000 !important;
@@ -166,16 +209,17 @@ body{
 }
 
 
-#start{
+#start {
     position: relative;
     display: inline-block;
 }
 
 .startdropcontent {
     width: 210px;
+    margin-bottom: 23px;
     display: none;
-    position: absolute;
-    top: 170px;
+    position: fixed;
+    bottom: 0;
     left: 2px;
     font-family: 'pix M 8pt';
     font-size: 8px;
@@ -205,9 +249,9 @@ body{
     color: #ffffff;
 }
 
-.showstartcontent{display:block;}
+.showstartcontent {display:block;}
 
-#separator{
+#separator {
     margin: 0px;
     width: 100px;
     padding-left: 80px;
@@ -219,7 +263,7 @@ body{
     position: relative;
 }
 
-#w98bar{
+#w98bar {
     position: absolute;
     top: 0px;
     width: 24px;
@@ -240,25 +284,23 @@ body{
     background-position-x: 27px;
 }
 
-#github{background-image: url(./images/github.png)}
-#wupdate{background-image: url(./images/wupdate.png)}
-#programs{background-image: url(./images/programs.png)}
-#favorites{background-image: url(./images/favorites.png)}
-#documents{background-image: url(./images/documents.png)}
-#settings{background-image: url(./images/settings.png)}
-#find{background-image: url(./images/find.png)}
-#help{background-image: url(./images/help.png)}
-#run{background-image: url(./images/run.png)}
-#logoff{background-image: url(./images/logoff.png)}
+#github {background-image: url(./images/github.png)}
+#wupdate {background-image: url(./images/wupdate.png)}
+#programs {background-image: url(./images/programs.png)}
+#favorites {background-image: url(./images/favorites.png)}
+#documents {background-image: url(./images/documents.png)}
+#settings {background-image: url(./images/settings.png)}
+#find {background-image: url(./images/find.png)}
+#help {background-image: url(./images/help.png)}
+#run {background-image: url(./images/run.png)}
+#logoff {background-image: url(./images/logoff.png)}
 #shutdown {background-image: url(./images/shut.png)}
 
 .pixel {
-    background: white;
+    background: #ffffff;
     width: auto;
     cursor: url('./images/pen_cursor.png') 0 17, auto;
 }
-
-.pixel:hover {background: #000}
 
 .painted {
     background: #000;
@@ -266,5 +308,9 @@ body{
     cursor: url('./images/pen_cursor.png') 0 17, auto;
 }
 
+.pixel:hover, .painted:hover, .redColor:hover {
+    background-image: url(./images/gridhover.png);
+    background-size: cover;
+}
 
 
